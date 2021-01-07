@@ -1,125 +1,103 @@
-import React from "react"
-import styled from "styled-components"
-
+import React, { Component } from 'react';
+import styled from 'styled-components'
+import Carrinho from './Components/Carrinho/Carrinho';
+import Filtro from './Components/Filtro/Filtro';
+import Home from './Components/Home/Home'
+import QuantidadeProdutos from './Components/Home/QuantidadeProdutos';
 
 const Loja = styled.div`
-display:flex;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+/* flex-direction: column; */
 border: 1px solid black; 
 margin: 1vw;
-height: 99vh;
+/* height: 100vh; */
 width: 100vw;
 `
-const BoxFiltro = styled.div`
-margin-top: 1vw;
-padding-left: 1vw;
-padding-right: 1vw;
+const ContainerProdutos = styled.div `
+display: grid;
+background-color: red;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+/* height: 100vh; */
+/* width: 56vw; */
+/* margin-right: 20vh; */
+margin: 0;
 border: 1px solid black;
-height: 95vh;
-width: 22vw;
 `
-const Carrinho = styled.div`
-border: 1px solid black;
-margin-top: 1vw;
-padding-left: 1vw;
-padding-right: 1vw;
-height: 95vh;
-width: 13vw;
-position: relative;
-`
-
-const Quantidade = styled.div`
-margin-top: 1vw;
-padding-left: 1vw;
-padding-right: 1vw;
-border: 1px solid black;
-height: 15vh;
-width: 56vw;
-`
-
-
-class DesignGeral extends React.Component{
-
-  produtos = [
-    {
-      id: 1,
-      name: "Foguete da Missão Apollo 11",
-      value: 10000.0,
-      imageUrl: "https://picsum.photos/200/200",
-    }
+export default class App extends Component {
+  produtos = [{
+    id: 1,
+    name: "Táxi Espaciais",
+    value: 50.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 2,
+    name: "Viagem à Lua",
+    value: 30.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 3,
+    name: "Destino: Planeta Kepler-10c",
+    value: 40.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 4,
+    name: "O asteróide BR (2014 KP4)",
+    value: 20.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 5,
+    name: "Passeio pelas estrelas IRAS",
+    value: 10.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 6,
+    name: "Foguete da Mis",
+    value: 84.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 7,
+    name: "Foguete da Miss",
+    value: 34.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
+  {
+    id: 8,
+    name: "Foguete da Miss",
+    value: 10000.0,
+    imageUrl: "https://picsum.photos/200/200",
+  },
   ]
+  render() {
+    const componentProduto = this.produtos.map((produto) => {
+      return (
 
-  render(){
+        <div>
+          <Home
+          imageUrl = {produto.imageUrl}
+          name = {produto.name}
+          value = {produto.value}
+          />
+        </div>
+      )
+    }) 
     return(
-
       <Loja>
-      
-      <BoxFiltro>      
-      <h2>Filtros</h2>
-      <label for="VMin" > Valor Mínimo: </label>
-      <input id="VMin" type = "number" onChange=""/>
-      <label for="VMax"> Valor Máximo: </label>
-      <input id="VMax" type = "number" onChange=""/>
-      <label for="BuscaProd"> Buscar Produto: </label>
-      <input id="BuscaProd" type = "text" onChange=""/>       
-      </BoxFiltro>
-
-      
-      <home>
-        <Quantidade>
-
-        <p> Quantidade de Produto:</p>  
-
-        <label> Orientação: </label>
-        <select>
-          <option>Preço: Crescente</option>
-          <option>Preço: Decrescente</option>
-        </select>
-        </Quantidade>
-
-        <p>
-        <img src={this.props.imgURL} alt=""/>
-        <p>{this.props.name}</p>
-        <p>{this.props.value}</p>
-        <button>Adicionar ao Carrinho</button>
-        </p>
-
-
-      </home>
-
-
-      <Carrinho> 
-      <h3>Carrinho</h3>
-      <p>1x Produto <button>X</button></p>
-      <p>1x Produto<button>X</button></p>
-      <p>Total: R$ 396.00</p>
-      </Carrinho>
-
-      </Loja>
-
-    )
-  }
-}
-
-
-
-export default class App extends React.Component{
-  render (){
-    const componentsProduto = this.produtos.map((produto) =>{
-    return (
-      <div>            
-      <DesignGeral 
-      imgURL= {produto.imgURL}   
-      name = {produto.name}
-      value =  {produto.value}
-      />
-      </div>
-   
-    )
-    })
-    return (
-      <div>
         
-      </div>
+        <Filtro />        
+        <ContainerProdutos>
+          {/* <QuantidadeProdutos /> */}
+        {componentProduto}
+        </ContainerProdutos>        
+        <Carrinho />
+      </Loja>
     )
   }
 }
