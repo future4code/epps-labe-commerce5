@@ -4,71 +4,76 @@ import Carrinho from './Components/Carrinho/Carrinho';
 import Filtro from './Components/Filtro/Filtro';
 import Home from './Components/Home/Home'
 import QuantidadeProdutos from './Components/Home/QuantidadeProdutos';
-
 const Loja = styled.div`
-display: flex;
-flex-direction: column;
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+/* flex-direction: column; */
 border: 1px solid black; 
 margin: 1vw;
-height: 99vh;
+/* height: 100vh; */
 width: 100vw;
 `
 const ContainerProdutos = styled.div `
 display: grid;
+background-color: red;
+grid-template-columns: 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+/* height: 100vh; */
+/* width: 56vw; */
+/* margin-right: 20vh; */
+margin: 0;
+border: 1px solid black;
 `
-
 export default class App extends Component {
   produtos = [{
     id: 1,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "Táxi Espaciais",
+    value: 50.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 2,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "Viagem à Lua",
+    value: 30.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 3,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "Destino: Planeta Kepler-10c",
+    value: 40.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 4,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "O asteróide BR (2014 KP4)",
+    value: 20.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 5,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "Passeio pelas estrelas IRAS",
+    value: 10.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 6,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "Foguete da Mis",
+    value: 84.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 7,
-    name: "Foguete da Missão Apollo 11",
-    value: 10000.0,
+    name: "Foguete da Miss",
+    value: 34.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   {
     id: 8,
-    name: "Foguete da Missão Apollo 11",
+    name: "Foguete da Miss",
     value: 10000.0,
     imageUrl: "https://picsum.photos/200/200",
   },
   ]
-
-
   render() {
     const componentProduto = this.produtos.map((produto) => {
       return (
@@ -83,16 +88,13 @@ export default class App extends Component {
     }) 
     return(
       <Loja>
-        <Filtro />
-
-        <div>
-          <QuantidadeProdutos />
+        <Filtro />        
+        <ContainerProdutos>
+          {/* <QuantidadeProdutos /> */}
         {componentProduto}
-        </div>
-
+        </ContainerProdutos>        
         <Carrinho />
       </Loja>
     )
   }
 }
-
