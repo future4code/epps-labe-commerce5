@@ -36,7 +36,18 @@ height: 15vh;
 width: 56vw;
 `
 
+
 class DesignGeral extends React.Component{
+
+  produtos = [
+    {
+      id: 1,
+      name: "Foguete da Missão Apollo 11",
+      value: 10000.0,
+      imageUrl: "https://picsum.photos/200/200",
+    }
+  ]
+
   render(){
     return(
 
@@ -65,7 +76,13 @@ class DesignGeral extends React.Component{
         </select>
         </Quantidade>
 
-        <p>Grid de Produtos</p>
+        <p>
+        <img src={this.props.imgURL} alt=""/>
+        <p>{this.props.name}</p>
+        <p>{this.props.value}</p>
+        <button>Adicionar ao Carrinho</button>
+        </p>
+
 
       </home>
 
@@ -83,13 +100,25 @@ class DesignGeral extends React.Component{
   }
 }
 
+
+
 export default class App extends React.Component{
   render (){
+    const componentsProduto = this.produtos.map((produto) =>{
     return (
-      <div>      
+      <div>            
+      <DesignGeral 
+      imgURL= {produto.imgURL}   
+      name = {produto.name}
+      value =  {produto.value}
+      />
+      </div>
+   
+    )
+    })
+    return (
+      <div>
         
-      <DesignGeral/>    
-
       </div>
     )
   }
