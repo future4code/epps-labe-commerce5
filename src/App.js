@@ -36,8 +36,7 @@ height: 15vh;
 width: 56vw;
 `
 
-
-class Filtro extends React.Component{
+class DesignGeral extends React.Component{
   render(){
     return(
 
@@ -73,14 +72,8 @@ class Filtro extends React.Component{
 
       <Carrinho> 
       <h3>Carrinho</h3>
-      <p>1x Produto</p>
-      <button>Tirar do Carrinho</button>
-      <p>1x Produto</p>
-      <button>Tirar do Carrinho</button>
-      <p>1x Produto</p>
-      <button>Tirar do Carrinho</button>
-      <p>1x Produto</p>
-      <button>Tirar do Carrinho</button>
+      <p>1x Produto <button>X</button></p>
+      <p>1x Produto<button>X</button></p>
       <p>Total: R$ 396.00</p>
       </Carrinho>
 
@@ -90,16 +83,13 @@ class Filtro extends React.Component{
   }
 }
 
-const CardCompras = styled.div`
-text-align: center;
-border: 1px solid black;
-`
-
 export default class App extends React.Component{
   render (){
     return (
       <div>      
-      <Filtro />    
+        
+      <DesignGeral/>    
+
       </div>
     )
   }
