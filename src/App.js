@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Carrinho from './Components/Carrinho/Carrinho';
 import Filtro from './Components/Filtro/Filtro';
 import Home from './Components/Home/Home'
-import QuantidadeProdutos from './Components/Home/QuantidadeProdutos';
+// import QuantidadeProdutos from './Components/Home/QuantidadeProdutos';
 
 const Loja = styled.div`
 display: grid;
@@ -26,7 +26,8 @@ margin: 0;
 border: 1px solid black;
 `
 export default class App extends Component {
-  produtos = [{
+  state = {
+  produtos: [{
     id: 1,
     name: "Táxi Espaciais",
     value: 50.0,
@@ -74,9 +75,30 @@ export default class App extends Component {
     value: 10000.0,
     imageUrl: "https://picsum.photos/200/200",
   },
-  ]
-  render() {
-    const componentProduto = this.produtos.map((produto) => {
+  ], 
+
+  textoInput: ''
+
+  }
+
+  onChangeTextoInput = (e) =>{
+    this.setState({textoInput:e.target.value})
+    // this.props.filtraProdutosBusca(this.state.textoInput)
+    console.log('TEXTO INPUT', this.state.textoInput)
+    }
+
+
+  filtraProdutosBusca = () => {
+    
+    return this.state.produtos.filter(produto => produto.name.includes(this.state.textoInput) ) 
+  }
+
+   render() {
+
+    const listaFiltrada = this.filtraProdutosBusca()
+    console.log(listaFiltrada)
+
+    const componentProduto = listaFiltrada.map((produto) => {
       return (
 
         <div>
@@ -88,16 +110,21 @@ export default class App extends Component {
         </div>
       )
     }) 
+
     return(
       <Loja>
         
-        <Filtro />        
+        <Filtro filtraProdutosBusca={this.onChangeTextoInput} textoInput={this.state.textoInput}/>             
+
         <ContainerProdutos>
-          {/* <QuantidadeProdutos /> */}
         {componentProduto}
-        </ContainerProdutos>        
+        </ContainerProdutos>  
+
         <Carrinho />
       </Loja>
     )
+  
   }
 }
+
+
