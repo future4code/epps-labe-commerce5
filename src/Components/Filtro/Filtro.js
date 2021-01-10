@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-// import FiltroBuscaProd from './FiltroBuscaProd'
-import FiltroMinMax from './FiltroMinMax'
+
 
 
 const BoxFiltro = styled.div`
@@ -21,10 +20,24 @@ export default class Filtro extends React.Component {
             <BoxFiltro>
                 <h2>Filtros</h2>                
                 
-                <FiltroMinMax />
+                          
+                {/* <FiltroMinMax /> */}
+
+                <p>Quantidade de produtos: {this.props.quantidade}</p>
+
+
+                <valMinMax>                               
+                 <label for="VMin" > Valor Mínimo: </label>
+                <input id="VMin" type="number" onChange="" />
+                
+                <label for="VMax"> Valor Máximo: </label>
+                <input id="VMax" type="number" onChange="" /> 
+                               
+                </valMinMax>
 
                 <label for="BuscaProd"> Buscar Produto: </label>
                 <input id="BuscaProd" type="text" value= {this.props.textoInput} onChange={(e)=>this.props.filtraProdutosBusca(e)} /> 
+
 
             </BoxFiltro>
         )

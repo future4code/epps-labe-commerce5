@@ -77,7 +77,8 @@ export default class App extends Component {
   },
   ], 
 
-  textoInput: ''
+  textoInput: '',
+  inputCrescente: "Crescente"
 
   }
 
@@ -87,7 +88,27 @@ export default class App extends Component {
     console.log('TEXTO INPUT', this.state.textoInput)
     }
 
-
+    onChangeCrescente = (e) => {
+      this.setState({ inputCrescente: e.target.value });
+      switch (this.state.inputCrescente) {
+        case "Crescente":
+          return this.setState({
+            ListaProdutos: this.state.produtos.sort(function (a, b) {
+              return b.value - a.value;
+            }),
+          });
+        case "Decrescente":
+          return this.setState({
+            ListaProdutos: this.state.produtos.sort(function (a, b) {
+              return a.value - b.value;
+            }),
+          });
+        default:
+          return true;
+      }
+  
+    }
+    
   filtraProdutosBusca = () => {
     
     return this.state.produtos.filter(produto => produto.name.includes(this.state.textoInput) ) 
@@ -114,7 +135,8 @@ export default class App extends Component {
     return(
       <Loja>
         
-        <Filtro filtraProdutosBusca={this.onChangeTextoInput} textoInput={this.state.textoInput}/>             
+        <Filtro quantidade = {listaFiltrada.length}
+        filtraProdutosBusca={this.onChangeTextoInput} textoInput={this.state.textoInput}/>             
 
         <ContainerProdutos>
         {componentProduto}
