@@ -23,7 +23,7 @@ export default class Filtro extends React.Component {
                           
                 {/* <FiltroMinMax /> */}
 
-                <p>Quantidade de produtos: {(e)=>this.props.listaFiltrada.length(e)}</p>
+                <p>Quantidade de produtos: {this.props.quantidade}</p>
 
 
                 <valMinMax>                               

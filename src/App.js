@@ -78,7 +78,7 @@ export default class App extends Component {
   ], 
 
   textoInput: '',
-  // inputCrescente: "Crescente"
+  inputCrescente: "Crescente"
 
   }
 
@@ -88,12 +88,12 @@ export default class App extends Component {
     console.log('TEXTO INPUT', this.state.textoInput)
     }
 
-    onChangeCrecente = (e) => {
+    onChangeCrescente = (e) => {
       this.setState({ inputCrescente: e.target.value });
       switch (this.state.inputCrescente) {
         case "Crescente":
           return this.setState({
-            ListaProdutos: this.state.ListaProdutos.sort(function (a, b) {
+            ListaProdutos: this.state.produtos.sort(function (a, b) {
               return b.value - a.value;
             }),
           });
@@ -108,7 +108,7 @@ export default class App extends Component {
       }
   
     }
-
+    
   filtraProdutosBusca = () => {
     
     return this.state.produtos.filter(produto => produto.name.includes(this.state.textoInput) ) 
@@ -117,7 +117,7 @@ export default class App extends Component {
    render() {
 
     const listaFiltrada = this.filtraProdutosBusca()
-    
+    console.log(listaFiltrada)
 
     const componentProduto = listaFiltrada.map((produto) => {
       return (
@@ -134,25 +134,9 @@ export default class App extends Component {
 
     return(
       <Loja>
-        <header>
-        <p>Quantidade de produtos: {listaFiltrada.length}</p>
-              <select
-                value={this.state.inputCrescente}
-                onChange={this.onChangeCrecente}
-              >
-                <option value="Crescente">Preco: Crescente</option>
-                <option value="Decrescente">Preco: Decrescente</option>
-              </select>
-        </header>
-
-
-        <Filtro 
         
-        filtraProdutosBusca={this.onChangeTextoInput} textoInput={this.state.textoInput}
-        
-        
-
-        />             
+        <Filtro quantidade = {listaFiltrada.length}
+        filtraProdutosBusca={this.onChangeTextoInput} textoInput={this.state.textoInput}/>             
 
         <ContainerProdutos>
         {componentProduto}
