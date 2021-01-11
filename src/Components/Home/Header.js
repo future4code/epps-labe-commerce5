@@ -30,20 +30,24 @@ color: white;
 
 export default class Header extends Component {
 
+
     render() {
         return (
             <Cabecalho>
-            <HeaderLeft> Quantidade de Produtos:</HeaderLeft>
+                <HeaderLeft>Quantidade de produtos: {this.props.quantidade}</HeaderLeft>
 
-            <Titulo><h1>LABECOMMERCE 5</h1></Titulo>
+                <Titulo><h1>LABECOMMERCE 5</h1></Titulo>
 
-            <HeaderRight>
-                <label> Orientação: </label>
-                <select>
-                    <option value="crescente">Preço: Crescente</option>
-                    <option value="decrescente">Preço: Decrescente</option>
-                </select>
-            </HeaderRight>
+                <HeaderRight>
+                    <label> Orientação: </label>
+                    <select
+                        value={this.props.inputCrescente}
+                        onChange={(e) => this.props.filtroCrescente(e)}
+                    >
+                        <option value="Crescente">Preco: Crescente</option>
+                        <option value="Decrescente">Preco: Decrescente</option>
+                    </select>
+                </HeaderRight>
             </Cabecalho>
         )
     }

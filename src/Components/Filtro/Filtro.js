@@ -17,7 +17,7 @@ export default class Filtro extends Component {
                 <h2>Filtros</h2>
                 <br></br>
                 <label for="VMin" > Valor Mínimo: </label>
-                <input id="VMin" type="number" onChange="" />
+                <input id="VMin" type="number" value= {this.props.valueMin} onChange={(e)=>this.props.ValorMinimo(e)} />
                 <label for="VMax"> Valor Máximo: </label>
                 <input id="VMax" type="number" onChange="" />
                 <label for="BuscaProd"> Buscar Produto: </label>

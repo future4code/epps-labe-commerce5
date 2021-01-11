@@ -10,12 +10,6 @@ margin-bottom: 0.3vw;
 margin-top: 0.3vw;
 `
 
-const Button = styled.button`
-padding: 2vh 2.6vw;
-background-color: black;
-color: white;
-`
-
 const Imagem = styled.img`
 width: 200px;
 height: 200px;
@@ -28,7 +22,6 @@ export default class Home extends Component {
                     <Imagem src={this.props.imageUrl} alt="" />
                     <p>{this.props.name}</p>
                     <p>R${this.props.value},00</p>
-                    <Button>Adicionar ao Carrinho</Button>
                 </Produto>
         )
     }
